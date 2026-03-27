@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travelling Salesman Problem | Interactive Educational Tool</title>
+    <meta name="description" content="An interactive tool to explore and understand the Travelling Salesman Problem (TSP) using various algorithms like Brute Force and 2-Opt.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="dark">
+    <!-- Theme Toggle -->
+    <button id="mode-toggle" aria-label="Toggle Dark Mode" title="Switch between Light and Dark mode">
+        🌙
+    </button>
+
+    <!-- Sidebar Controls & Educational Content -->
+    <aside class="sidebar">
+        <header class="brand">
+            <h1>TSP Explorer</h1>
+            <p class="subtitle">Exploring the complexities of combinatorial optimisation with the Travelling Salesman Problem.</p>
+        </header>
+
+        <section class="controls">
+            <div class="control-group">
+                <label for="algorithm-select">Choose Algorithm</label>
+                <select id="algorithm-select">
+                    <option value="none">Manual Placement</option>
+                    <option value="nearest-neighbour">Nearest Neighbour (Greedy)</option>
+                    <option value="brute-force">Brute Force (Exact)</option>
+                    <option value="two-opt">2-Opt (Improvement)</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <button id="solve-btn" class="primary">Solve Problem</button>
+                <button id="clear-btn" class="secondary">Clear Canvas</button>
+            </div>
+            
+            <div class="control-group">
+                <button id="random-btn" class="secondary">Generate Random Cities</button>
+            </div>
+        </section>
+
+        <section class="educational-panel">
+            <div class="info-section">
+                <h3>What is TSP?</h3>
+                <p>The Travelling Salesman Problem asks: "Given a list of cities and the distances between each pair, what is the shortest possible route that visits each city exactly once and returns to the origin city?"</p>
+            </div>
+
+            <div class="info-section">
+                <h3>NP-Hard Search</h3>
+                <p>TSP is <strong>NP-hard</strong>. This means that as you add more cities, the time needed to find the absolute shortest path grows factorially ($O(n!)$). For just 20 cities, there are $2.43 \times 10^{18}$ possible routes!</p>
+            </div>
+
+            <div class="info-section">
+                <h3>Algorithms</h3>
+                <p><strong>Nearest Neighbour:</strong> A "greedy" approach that always picks the closest unvisited city. It's fast but often sub-optimal.</p>
+                <p><strong>2-Opt:</strong> A local search algorithm that iteratively improves a path by swapping edges to remove intersections.</p>
+            </div>
+
+            <div class="info-section">
+                <h3>Real-world Use</h3>
+                <p>TSP logic is used in logistics for delivery routes, DNA sequencing, and even in manufacturing circuit boards.</p>
+            </div>
+        </section>
+    </aside>
+
+    <!-- Main Rendering Area -->
+    <main id="main-canvas-container">
+        <canvas id="tsp-canvas"></canvas>
+
+        <!-- Stats Overlay -->
+        <div class="hud">
+            <div class="status-card">
+                <div class="status-item">
+                    <span class="status-label">Total Distance:</span>
+                    <span id="stat-distance" class="status-value">0.00 px</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">City Count:</span>
+                    <span id="stat-cities" class="status-value">0</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Status:</span>
+                    <span id="stat-status" class="status-value">Idle</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
