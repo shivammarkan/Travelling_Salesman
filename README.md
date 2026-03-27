@@ -2,6 +2,8 @@
 
 An elegant, interactive web application designed to teach the **Travelling Salesman Problem (TSP)**, a classic challenge in computer science and combinatorial optimisation.
 
+🔗 **[Live Demo](https://shivammarkan.github.io/Travelling_Salesman/)**
+
 ## Features
 
 -   **Interactive Canvas**: Click to place cities and create your own TSP instances.
